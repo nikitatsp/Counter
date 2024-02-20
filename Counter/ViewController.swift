@@ -9,16 +9,15 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    @IBOutlet weak var label: UILabel!
+    @IBOutlet weak private var label: UILabel!
     var count: Int = 0
     
     
-    @IBOutlet weak var textView: UITextView!
+    @IBOutlet weak private var textView: UITextView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        
+    
         textView.text = "История изменений: "
         
     }
@@ -26,17 +25,14 @@ class ViewController: UIViewController {
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         
-//        Выполняю расчет размера экрана, чтобы сделать нормальный размер шрифта для каждого устройства
-        
         let safeAreaWidth = view.safeAreaLayoutGuide.layoutFrame.width
-        print(safeAreaWidth)
         
         label.font = UIFont.systemFont(ofSize: safeAreaWidth / 15)
         textView.font = UIFont.systemFont(ofSize: safeAreaWidth / 29)
     }
     
     
-    @IBAction func buttonTapPlus(_ sender: Any) {
+    @IBAction private func buttonTapPlus(_ sender: Any) {
         count += 1
         label.text = "Значение счетчика: \(count)"
         
@@ -50,7 +46,7 @@ class ViewController: UIViewController {
     }
     
     
-    @IBAction func buttonTapMinus(_ sender: Any) {
+    @IBAction private func buttonTapMinus(_ sender: Any) {
         count -= 1
         if count < 0 {
             count = 0
@@ -74,7 +70,7 @@ class ViewController: UIViewController {
     }
     
     
-    @IBAction func buttonTapZero(_ sender: Any) {
+    @IBAction private func buttonTapZero(_ sender: Any) {
         count = 0
         label.text = "Значение счетчика: \(count)"
         let currentDate = Date()
